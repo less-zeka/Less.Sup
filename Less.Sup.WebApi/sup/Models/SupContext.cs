@@ -1,8 +1,9 @@
 ﻿using System.Data.Entity;
+using System.Threading.Tasks;
 
-namespace Sup.Models
+namespace Less.Sup.WebApi.Models
 {
-    public class SupContext : DbContext
+    public class SupContext : DbContext, ISupContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -20,5 +21,12 @@ namespace Sup.Models
         public DbSet<WayPoint> WayPoints{ get; set; }
         public DbSet<Route> Routes { get; set; }
         public DbSet<Location> Locations { get; set; }
+
+        public override Task<int> SaveChangesAsync()
+        {
+            return base.SaveChangesAsync();
+        }
+
+        //public DbEntityEntry<Route> Entry { get; set; }
     }
 }

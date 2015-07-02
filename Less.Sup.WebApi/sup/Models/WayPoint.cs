@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 
-namespace Sup.Models
+namespace Less.Sup.WebApi.Models
 {
     public class WayPoint
     {

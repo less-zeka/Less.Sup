@@ -1,22 +1,17 @@
+using System.Data.Entity.Migrations;
 using System.Data.Entity.Spatial;
+using Less.Sup.WebApi.Models;
 
-namespace Sup.Migrations
+namespace Less.Sup.WebApi.Migrations
 {
-    using System.Data.Entity.Migrations;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<Models.SupContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SupContext>
     {
-        public Configuration()
+        protected override void Seed(SupContext context)
         {
-            //AutomaticMigrationsEnabled = true;
-        }
-
-        protected override void Seed(Models.SupContext context)
-        {
-            var schiffenen = new Models.Route{Name = "Schiffenen"};
+            var schiffenen = new Route{Name = "Schiffenen"};
 
             #region schiffenenLocations
-            var schiffenen1 = new Models.Location
+            var schiffenen1 = new Location
             {
                 Info = "Start",
                 Latitude = 46.806323,
@@ -24,7 +19,7 @@ namespace Sup.Migrations
                 Route = schiffenen,
                 Point = DbGeography.FromText("POINT(46.806323 7.166031)")
             };
-            var schiffenen2 = new Models.Location
+            var schiffenen2 = new Location
             {
                 Info = "WegPunkt",
                 Latitude = 46.813138,
@@ -32,7 +27,7 @@ namespace Sup.Migrations
                 Route = schiffenen,
                 Point = DbGeography.FromText("POINT(46.813138 7.165129)")
             };
-            var schiffenen3 = new Models.Location
+            var schiffenen3 = new Location
             {
                 Info = "Ende",
                 Latitude = 46.861753,
@@ -41,10 +36,10 @@ namespace Sup.Migrations
                 Point = DbGeography.FromText("POINT(46.861753 7.179978)")
             };
             #endregion
-            var bernBremgarten = new Models.Route { Name = "Bern-Bremgarten" };
+            var bernBremgarten = new Route { Name = "Bern-Bremgarten" };
 
             #region BernBremgartenLocations
-            var bern1 = new Models.Location
+            var bern1 = new Location
             {
                 Info = "Start",
                 Latitude = 46.954318,
@@ -52,7 +47,7 @@ namespace Sup.Migrations
                 Route = bernBremgarten,
                 Point = DbGeography.FromText("POINT(46.954318 7.441991)")
             };
-            var bern2 = new Models.Location
+            var bern2 = new Location
             {
                 Info = "WegPunkt1",
                 Latitude = 46.977016,
@@ -60,7 +55,7 @@ namespace Sup.Migrations
                 Route = bernBremgarten,
                 Point = DbGeography.FromText("POINT(46.977016 7.457097)")
             };
-            var bern3 = new Models.Location
+            var bern3 = new Location
             {
                 Info = "WegPunkt2",
                 Latitude = 46.972448, 
@@ -68,7 +63,7 @@ namespace Sup.Migrations
                 Route = bernBremgarten,
                 Point = DbGeography.FromText("POINT(46.972448 7.439373)")
             };
-            var bern4 = new Models.Location
+            var bern4 = new Location
             {
                 Info = "Ende",
                 Latitude = 46.971379,

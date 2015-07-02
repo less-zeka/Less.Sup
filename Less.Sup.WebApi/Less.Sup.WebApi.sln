@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sup", "Sup\Sup.csproj", "{47BC79F3-910E-405E-85A8-0D26A8E15348}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Less.Sup.WebApi", "Sup\Less.Sup.WebApi.csproj", "{47BC79F3-910E-405E-85A8-0D26A8E15348}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sup.Tests", "Sup.Tests\Sup.Tests.csproj", "{086ED36B-0E70-4F71-AF40-2518429A593C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Less.Sup.WebApi.Tests", "Sup.Tests\Less.Sup.WebApi.Tests.csproj", "{086ED36B-0E70-4F71-AF40-2518429A593C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D096BFF7-9B42-4C22-86D8-6111E49968C6}"
 	ProjectSection(SolutionItems) = preProject
