@@ -957,19 +957,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\site.js" />
-    <Content Include="Scripts\sup\supApp.js" />
-    <Content Include="Scripts\sup\supServices.js" />
+    <Content Include="App\supApp.js" />
+    <Content Include="App\supServices.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Scripts\app\_run.js" />
-    <Content Include="Scripts\app\ajaxPrefilters.js" />
-    <Content Include="Scripts\app\app.datamodel.js" />
-    <Content Include="Scripts\app\app.viewmodel.js" />
-    <Content Include="Scripts\app\home.viewmodel.js" />
-    <Content Include="Scripts\app\login.viewmodel.js" />
-    <Content Include="Scripts\app\manage.viewmodel.js" />
-    <Content Include="Scripts\app\register.viewmodel.js" />
-    <Content Include="Scripts\app\registerExternal.viewmodel.js" />
-    <Content Include="Scripts\app\userInfo.viewmodel.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -988,8 +978,9 @@
     <Content Include="Views\Shared\_Donate.cshtml" />
     <Content Include="Views\Sup\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <Content Include="Scripts\sup\loading.js" />
+    <Content Include="App\loading.js" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Sup\Add.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

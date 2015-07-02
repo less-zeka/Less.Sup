@@ -20,13 +20,10 @@ namespace Less.Sup.WebApi.Models
 
         public DbSet<WayPoint> WayPoints{ get; set; }
         public DbSet<Route> Routes { get; set; }
-        public DbSet<Location> Locations { get; set; }
 
-        public override Task<int> SaveChangesAsync()
-        {
-            return base.SaveChangesAsync();
-        }
-
-        //public DbEntityEntry<Route> Entry { get; set; }
+        //public override Task<int> SaveChangesAsync()
+        //{
+        //    return base.SaveChangesAsync();
+        //}
     }
 }

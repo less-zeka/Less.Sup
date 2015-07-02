@@ -9,10 +9,7 @@ namespace Less.Sup.WebApi
     {
         DbSet<WayPoint> WayPoints { get; set; }
         DbSet<Route> Routes { get; set; }
-        DbSet<Location> Locations { get; set; }
 
         Task<int> SaveChangesAsync();
-
-        //DbEntityEntry<Route> Entry { get; set; }
     }
 }

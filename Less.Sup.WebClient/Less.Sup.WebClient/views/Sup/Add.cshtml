@@ -1,6 +1,4 @@
-﻿@model int?
-
-@{
+﻿@{
     ViewBag.Title = "Sup";
 }
 
@@ -14,9 +12,8 @@
         background-color: white;
     }
 </style>
-@*<div ng-init="init('@Model')"></div>*@
-@*ng-init="init('@Model')"*@
-<div ng-app="supApp" ng-controller="routeCtrl" ng-init="init('@Model')">
+<div ng-app="supApp" ng-controller="routeCtrl">
+
     <!-- This is the div that will contain the Google Map -->
     <div id="freeInfo" class="panel panel-default well">
         In this free and ad-free version you get the closest sup-route from our database to your current position. That's awesome! Imagine what you could get after some donations. I have plenty of ideas to enhance it!
@@ -25,10 +22,9 @@
     <div ng-show="isLoading">
         <img src="~/Images/ajax-loader.gif" />
     </div>
-
+          
     <div id="map_canvas" ng-hide="isLoading" ng-cloak class="col-xs-12 col-md-6" style="height: 500px;"></div>
     <div id="weather" class="col-xs-4 .col-md-offset-0"></div>
-    <div id="edit" ng-show="canEdit" class="btn btn-default">Add WayPoint</div>
     <div id="routeInfo" ng-cloak class="btn btn-default col-xs-3 .col-md-offset-0">
         <div id="routeInfoSummary">easy</div>
         <div id="routeInfoDetails" style="display: none">

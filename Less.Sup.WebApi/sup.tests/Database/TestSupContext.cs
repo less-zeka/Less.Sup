@@ -14,7 +14,6 @@ namespace Less.Sup.WebApi.Tests.Database
 
         public DbSet<Route> Routes { get; set; }
         public DbSet<WayPoint> WayPoints { get; set; }
-        public DbSet<Location> Locations{ get; set; }
 
         public Task<int> SaveChangesAsync()
         {

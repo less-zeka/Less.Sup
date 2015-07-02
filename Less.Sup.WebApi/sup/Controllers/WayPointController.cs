@@ -1,7 +1,11 @@
-﻿using System.Linq;
+﻿using System.Data.Entity.Spatial;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
 using Less.Sup.WebApi.Models;
+using Less.Sup.WebApi.Utils;
 
 namespace Less.Sup.WebApi.Controllers
 {
@@ -24,6 +28,26 @@ namespace Less.Sup.WebApi.Controllers
                 return NotFound();
             }
             return Ok(wayPoint);
+        }
+
+        // POST: api/Routes
+        [ResponseType(typeof(WayPoint))]
+        public async Task<IHttpActionResult> PostWayPoint(WayPoint wayPoint)
+        {
+            if (wayPoint.DbGeography == null)
+            {
+                wayPoint.DbGeography = GeoUtils.CreatePoint(wayPoint.Longitude, wayPoint.Latitude);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _database.WayPoints.Add(wayPoint);
+            await _database.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = wayPoint.Id }, wayPoint);
         }
     }
 }

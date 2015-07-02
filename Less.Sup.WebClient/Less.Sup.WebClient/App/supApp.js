@@ -4,28 +4,47 @@
 //http://stackoverflow.com/questions/17494732/how-to-make-a-loading-indicator-for-every-asynchronous-action-using-q-in-an-a
 
 supApp.controller('routeCtrl', function($scope, $http, $resource) {
+    $scope.init = function(routeId) {
+        $scope.routeId = routeId;
 
-    $scope.isLoading = true;
-    //get User Coordinates
-    $scope.userLocationLatitude = 0.0;
-    $scope.userLocationLongitude = 0.0;
-    //TODO async or similar; promises?
-    navigator.geolocation.getCurrentPosition(function(position) {
-        $scope.userLocationLatitude = position.coords.latitude;
-        $scope.userLocationLongitude = position.coords.longitude;
-        $scope.$apply();
-        getRouteData($resource);
-    });
+        console.log(routeId); // debug info
+        $scope.isLoading = true;
 
-    /*
+        //get User Coordinates
+        $scope.userLocationLatitude = 0.0;
+        $scope.userLocationLongitude = 0.0;
+        //initially not in edit mode
+        $scope.canEdit = false;
+
+        if ($scope.routeId) {
+            $scope.canEdit = true;
+            navigator.geolocation.getCurrentPosition(function(position) {
+                $scope.userLocationLatitude = position.coords.latitude;
+                $scope.userLocationLongitude = position.coords.longitude;
+                $scope.$apply();
+                getRouteDataForRoute($resource);
+            });
+        } else {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                $scope.userLocationLatitude = position.coords.latitude;
+                $scope.userLocationLongitude = position.coords.longitude;
+                $scope.$apply();
+                getRouteData($resource);
+            });
+        }
+    }
+
+
+/*
     gets the closest route (distance from any route point to current user position) from an WebApi i made
     */
     var getRouteData = function($resource) {
         $http.defaults.useXDomain = true;
-        var uri = 'http://sup-webapi.cheese-maker.ch/api/Route';
+        //var uri = 'http://sup-webapi.cheese-maker.ch/api/Route';
+        var uri = 'http://localhost:50567/api/Routes';
         routeApi = $resource(uri);
 
-        routeApi.get({ longitude: $scope.userLocationLongitude, latitude: $scope.userLocationLatitude })
+        routeApi.get({ lat: $scope.userLocationLatitude, lon: $scope.userLocationLongitude,  })
             .$promise.then(function(route) {
                     route.routeInfo = 'No danger ' +
                         'water is calm' +
@@ -41,9 +60,33 @@ supApp.controller('routeCtrl', function($scope, $http, $resource) {
                 $scope.isLoading = false;
             });
     }
+
+    var getRouteDataForRoute = function ($resource) {
+        $http.defaults.useXDomain = true;
+        //var uri = 'http://sup-webapi.cheese-maker.ch/api/Route';
+        var uri = 'http://localhost:50567/api/Routes';
+        routeApi = $resource(uri);
+
+        routeApi.get({ id: $scope.routeId, })
+            .$promise.then(function (route) {
+                route.routeInfo = 'No danger ' +
+                    'water is calm' +
+                    'paddle strength: ++';
+                $scope.route = route;
+
+                showRoute($resource);
+            },
+                function (response) {
+                    // TODO: handle the error somehow
+                }).finally(function () {
+                    // called no matter success or failure
+                    $scope.isLoading = false;
+                });
+    }
+
     var showRoute = function($resource) {
         window.google.maps.visualRefresh = true;
-        var center = new window.google.maps.LatLng($scope.route.Location[0].Latitude, $scope.route.Location[0].Longitude);
+        var center = new window.google.maps.LatLng($scope.route.WayPoints[0].Latitude, $scope.route.WayPoints[0].Longitude);
         // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
         var mapOptions = {
             zoom: 13,
@@ -57,9 +100,9 @@ supApp.controller('routeCtrl', function($scope, $http, $resource) {
         createMarker('Your current position', $scope.userLocationLatitude, $scope.userLocationLongitude, 'http://maps.google.com/mapfiles/ms/icons/red-dot.png');
         //createInfoWindow('Your current position');
 
-        $.each($scope.route.Location, function(i, item) {
+        $.each($scope.route.WayPoints, function(i, item) {
             var marker = createMarker(item.info, item.Latitude, item.Longitude, 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
-            createInfoWindow(marker, item.info, item.info)
+            createInfoWindow(marker, item.info, item.info);
         });
         //TODO use JS "await" so code has not to be written like that
         getWeatherData($resource);
@@ -82,7 +125,7 @@ supApp.controller('routeCtrl', function($scope, $http, $resource) {
             }
         }
 
-        weatherApi.get({ APPID: appId, lat: $scope.route.Location[0].Latitude, lon: $scope.route.Location[0].Longitude, mode: 'html' })
+        weatherApi.get({ APPID: appId, lat: $scope.route.WayPoints[0].Latitude, lon: $scope.route.WayPoints[0].Longitude, mode: 'html' })
             .$promise.then(function (data) {
                 //TODO doesn't work
                 $scope.Weather = data;

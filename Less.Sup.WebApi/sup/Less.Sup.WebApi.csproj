@@ -81,6 +81,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -139,22 +140,21 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\WayPointController.cs" />
-    <Compile Include="Controllers\RouteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IOC\UnityResolver.cs" />
     <Compile Include="ISupContext.cs" />
-    <Compile Include="Migrations\201506301048582_Update1.cs" />
-    <Compile Include="Migrations\201506301048582_Update1.Designer.cs">
-      <DependentUpon>201506301048582_Update1.cs</DependentUpon>
+    <Compile Include="Migrations\201507021214502_U1.cs" />
+    <Compile Include="Migrations\201507021214502_U1.Designer.cs">
+      <DependentUpon>201507021214502_U1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\WayPoint.cs" />
-    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\SupContext.cs" />
     <Compile Include="Models\Route.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\GeoUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -171,17 +171,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201507021214502_U1.resx">
+      <DependentUpon>201507021214502_U1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\cheesemaker.sup-webapi.pubxml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506301048582_Update1.resx">
-      <DependentUpon>201506301048582_Update1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

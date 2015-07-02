@@ -41,7 +41,7 @@ namespace Less.Sup.WebClient
                  "~/Content/Site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/supApp")
-                .IncludeDirectory("~/Scripts/sup", "*.js"));
+                .IncludeDirectory("~/App", "*.js"));
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using Less.Sup.WebApi.Models;
+using Less.Sup.WebApi.Utils;
 
 namespace Less.Sup.WebApi.Controllers
 {
@@ -15,15 +17,38 @@ namespace Less.Sup.WebApi.Controllers
     {
         private readonly SupContext _database = new SupContext();
 
+        //public RoutesController(ISupContext context)
+        //{
+        //    _database = context;
+        //}
+
         // GET: api/Routes
         public IQueryable<Route> GetRoutes()
         {
             return _database.Routes;
         }
 
+        // GET: api/Routes?longitude=7.4792713&latitude=46.9742651
+        [HttpGet]
+        [ResponseType(typeof(Route))]
+        public IHttpActionResult GetRoutes(double lat, double lon)
+        {
+            var myLocation = GeoUtils.CreatePoint(lat, lon);
+            var nearestLocation = (from u in _database.WayPoints
+                              orderby u.DbGeography.Distance(myLocation)
+                              select u).FirstOrDefault();
+
+            var nearestRoute = _database.Routes.FirstOrDefault(r => r.Id == nearestLocation.RouteId);
+            // TODO: Please remove me soon!
+            var hackId = nearestLocation.RouteId;
+            nearestRoute = _database.Routes.FirstOrDefault(r => r.Id == hackId);
+            
+            return Ok(nearestRoute);
+        }
+
         // GET: api/Routes/5
         [ResponseType(typeof(Route))]
-        public async Task<IHttpActionResult> GetRoute(int id)
+        public async Task<IHttpActionResult> GetRoutes(int id)
         {
             var route = await _database.Routes.FindAsync(id);
             if (route == null)
