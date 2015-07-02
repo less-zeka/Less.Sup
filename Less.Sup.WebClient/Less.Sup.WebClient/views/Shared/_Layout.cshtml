@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Less.More</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @Styles.Render("~/Content/css")
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/angular-resource.js"></script>
+        @Scripts.Render("~/bundles/supApp")
+
+        @RenderSection("Scripts", required: false)
+
+        <style type="text/css">
+            @RenderSection("Styles", false)
+        </style>
+    </head>
+    <body>
+        <div class="container body-content">
+            @RenderBody()
+            <footer class="panel-footer col-xs-12">
+                <div>&copy; @DateTime.Now.Year - Less.More</div>
+                @Html.Partial("_Donate")
+            </footer>
+        </div>
+    </body>
+</html>
