@@ -5,6 +5,9 @@
 }
 
 <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+<script src="~/App/supApp.js"></script>
+<script src="~/App/loading.js"></script>
+<script src="~/App/supServices.js"></script>
 
 <!-- This css is to give a nice big popup "info window" when a marker is clicked on the map -->
 <style type="text/css">
@@ -17,24 +20,23 @@
 @*<div ng-init="init('@Model')"></div>*@
 @*ng-init="init('@Model')"*@
 <div ng-app="supApp" ng-controller="routeCtrl" ng-init="init('@Model')">
-    <!-- This is the div that will contain the Google Map -->
-    <div id="freeInfo" class="panel panel-default well">
+    @*<div id="freeInfo" class="panel panel-default well">
         In this free and ad-free version you get the closest sup-route from our database to your current position. That's awesome! Imagine what you could get after some donations. I have plenty of ideas to enhance it!
         @Html.Partial("_Donate")
-    </div>
+    </div>*@
     <div ng-show="isLoading">
         <img src="~/Images/ajax-loader.gif" />
     </div>
 
     <div id="map_canvas" ng-hide="isLoading" ng-cloak class="col-xs-12 col-md-6" style="height: 500px;"></div>
-    <div id="weather" class="col-xs-4 .col-md-offset-0"></div>
-    <div id="edit" ng-show="canEdit" class="btn btn-default">Add WayPoint</div>
-    <div id="routeInfo" ng-cloak class="btn btn-default col-xs-3 .col-md-offset-0">
+    @*<div id="weather" class="col-xs-4 .col-md-offset-0"></div>*@
+    <div id="edit" ng-show="canEdit" ng-click="addWayPoint()" class="btn btn-default">Add WayPoint</div>
+    @*<div id="routeInfo" ng-cloak class="btn btn-default col-xs-3 .col-md-offset-0">
         <div id="routeInfoSummary">easy</div>
         <div id="routeInfoDetails" style="display: none">
             <p>{{ routeInfo }}</p>
         </div>
-    </div>
+    </div>*@
 </div>
         @section scripts {
             <script type="text/javascript">

@@ -111,7 +111,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\SupController.cs" />
+    <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +202,7 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\Less.Sup.WebClient.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -976,11 +977,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_Donate.cshtml" />
-    <Content Include="Views\Sup\Index.cshtml" />
+    <Content Include="Views\Routes\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="App\loading.js" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Sup\Add.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

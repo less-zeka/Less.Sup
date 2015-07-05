@@ -9,7 +9,10 @@ namespace Less.Sup.WebApi
         {
             WebApiConfig.Register(GlobalConfiguration.Configuration);
 
-            System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<SupContext>());
+            
+            //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseAlways<Sup.WebApi.Models.SupContext>());
+            //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseAlways<SupContext>());
+            //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<SupContext>());
         }
     }
 }

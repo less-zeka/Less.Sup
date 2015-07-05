@@ -12,7 +12,7 @@ namespace Less.Sup.WebClient
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Sup", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Routes", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

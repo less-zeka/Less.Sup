@@ -139,15 +139,15 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
-    <Compile Include="Controllers\WayPointController.cs" />
+    <Compile Include="Controllers\WayPointsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IOC\UnityResolver.cs" />
     <Compile Include="ISupContext.cs" />
-    <Compile Include="Migrations\201507021214502_U1.cs" />
-    <Compile Include="Migrations\201507021214502_U1.Designer.cs">
-      <DependentUpon>201507021214502_U1.cs</DependentUpon>
+    <Compile Include="Migrations\201507031503187_V1.cs" />
+    <Compile Include="Migrations\201507031503187_V1.Designer.cs">
+      <DependentUpon>201507031503187_V1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\WayPoint.cs" />
@@ -158,8 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Migrations\Scripts\InsertData.sql" />
-    <Content Include="Migrations\Scripts\CreateDatabase.sql" />
+    <Content Include="Models\Migrations\Scripts\InsertData.sql" />
+    <Content Include="Models\Migrations\Scripts\CreateDatabase.sql" />
     <Content Include="Readme.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -172,15 +172,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507021214502_U1.resx">
-      <DependentUpon>201507021214502_U1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\cheesemaker.sup-webapi.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201507031503187_V1.resx">
+      <DependentUpon>201507031503187_V1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

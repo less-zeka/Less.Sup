@@ -2,7 +2,7 @@
 
 namespace Less.Sup.WebClient.Controllers
 {
-    public class SupController : Controller
+    public class RoutesController : Controller
     {
         public ActionResult Index()
         {

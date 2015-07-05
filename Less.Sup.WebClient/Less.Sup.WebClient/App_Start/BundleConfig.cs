@@ -40,8 +40,8 @@ namespace Less.Sup.WebClient
                  "~/Content/bootstrap.css",
                  "~/Content/Site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/supApp")
-                .IncludeDirectory("~/App", "*.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/supApp")
+            //    .IncludeDirectory("~/App", "*.js"));
 
         }
     }

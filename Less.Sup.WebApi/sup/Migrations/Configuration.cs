@@ -1,21 +1,27 @@
-using System.Data.Entity.Migrations;
 using System.Data.Entity.Spatial;
 using Less.Sup.WebApi.Models;
 
 namespace Less.Sup.WebApi.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<SupContext>
+    using System.Data.Entity.Migrations;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<Less.Sup.WebApi.Models.SupContext>
     {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+        }
+
         protected override void Seed(SupContext context)
         {
-            var schiffenen = new Route{Name = "Schiffenen"};
+            var schiffenen = new Route { Name = "Schiffenen" };
 
             #region schiffenenLocations
             var schiffenen1 = new WayPoint
             {
                 Info = "Start",
                 Latitude = 46.806323,
-                Longitude= 7.166031,
+                Longitude = 7.166031,
                 Route = schiffenen,
                 DbGeography = DbGeography.FromText("POINT(46.806323 7.166031)")
             };
@@ -23,7 +29,7 @@ namespace Less.Sup.WebApi.Migrations
             {
                 Info = "WegPunkt",
                 Latitude = 46.813138,
-                Longitude= 7.165129,
+                Longitude = 7.165129,
                 Route = schiffenen,
                 DbGeography = DbGeography.FromText("POINT(46.813138 7.165129)")
             };
@@ -58,8 +64,8 @@ namespace Less.Sup.WebApi.Migrations
             var bern3 = new WayPoint
             {
                 Info = "WegPunkt2",
-                Latitude = 46.972448, 
-                Longitude= 7.439373,
+                Latitude = 46.972448,
+                Longitude = 7.439373,
                 Route = bernBremgarten,
                 DbGeography = DbGeography.FromText("POINT(46.972448 7.439373)")
             };
@@ -67,7 +73,7 @@ namespace Less.Sup.WebApi.Migrations
             {
                 Info = "Ende",
                 Latitude = 46.971379,
-                Longitude= 7.417358,
+                Longitude = 7.417358,
                 Route = bernBremgarten,
                 DbGeography = DbGeography.FromText("POINT(46.971379 7.417358)")
             };
@@ -84,5 +90,6 @@ namespace Less.Sup.WebApi.Migrations
             context.WayPoints.AddOrUpdate(bern3);
             context.WayPoints.AddOrUpdate(bern4);
         }
+
     }
 }

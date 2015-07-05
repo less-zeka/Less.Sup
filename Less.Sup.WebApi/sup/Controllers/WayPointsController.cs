@@ -10,11 +10,11 @@ using Less.Sup.WebApi.Utils;
 namespace Less.Sup.WebApi.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class WayPointController : ApiController
+    public class WayPointsController : ApiController
     {
         private readonly ISupContext _database = new SupContext();
 
-        public WayPointController(ISupContext dbContext)
+        public WayPointsController(ISupContext dbContext)
         {
             _database = dbContext;
         }

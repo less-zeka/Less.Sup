@@ -7,13 +7,13 @@ namespace Less.Sup.WebApi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class U1 : IMigrationMetadata
+    public sealed partial class V1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(U1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(V1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507021214502_U1"; }
+            get { return "201507031503187_V1"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,7 +3,8 @@
 // check back later
 //http://stackoverflow.com/questions/17494732/how-to-make-a-loading-indicator-for-every-asynchronous-action-using-q-in-an-a
 
-supApp.controller('routeCtrl', function($scope, $http, $resource) {
+supApp.controller('routeCtrl', function ($scope, $http, $resource) {
+    $scope.resource = $resource;
     $scope.init = function(routeId) {
         $scope.routeId = routeId;
 
@@ -40,9 +41,9 @@ supApp.controller('routeCtrl', function($scope, $http, $resource) {
     */
     var getRouteData = function($resource) {
         $http.defaults.useXDomain = true;
-        //var uri = 'http://sup-webapi.cheese-maker.ch/api/Route';
-        var uri = 'http://localhost:50567/api/Routes';
-        routeApi = $resource(uri);
+        var uri = 'http://sup-webapi.cheese-maker.ch/api/Routes';
+        //var uri = 'http://localhost:50567/api/Routes';
+        var routeApi = $resource(uri);
 
         routeApi.get({ lat: $scope.userLocationLatitude, lon: $scope.userLocationLongitude,  })
             .$promise.then(function(route) {
@@ -63,8 +64,8 @@ supApp.controller('routeCtrl', function($scope, $http, $resource) {
 
     var getRouteDataForRoute = function ($resource) {
         $http.defaults.useXDomain = true;
-        //var uri = 'http://sup-webapi.cheese-maker.ch/api/Route';
-        var uri = 'http://localhost:50567/api/Routes';
+        var uri = 'http://sup-webapi.cheese-maker.ch/api/Routes';
+        //var uri = 'http://localhost:50567/api/Routes';
         routeApi = $resource(uri);
 
         routeApi.get({ id: $scope.routeId, })
@@ -161,5 +162,24 @@ supApp.controller('routeCtrl', function($scope, $http, $resource) {
             }
             return "<div class='infoDiv'><h2>" + title + "</h2></div>";
         }
+    }
+
+    $scope.addWayPoint = function () {
+        $http.defaults.useXDomain = true;
+        var uri = 'http://sup-webapi.cheese-maker.ch/api/WayPoints';
+        //var uri = 'http://localhost:50567/api/WayPoints';
+
+        var data = { "Latitude": $scope.userLocationLatitude, "Longitude": $scope.userLocationLongitude, "RouteId": $scope.routeId };
+        $http.post(
+            uri,
+            JSON.stringify(data),
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        ).success(function (d) {
+            //alert(d);
+        });
     }
 });
