@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\Migrations\Scripts\DataCreation.sql" />
     <Content Include="Models\Migrations\Scripts\InsertData.sql" />
     <Content Include="Models\Migrations\Scripts\CreateDatabase.sql" />
     <Content Include="Readme.txt" />
